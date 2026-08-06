@@ -1,12 +1,12 @@
 import type { PluginOption } from "vite-plus";
 
 /**
- * Options for defineCraftConfig
+ * Options for defineLaunchConfig
  *
  * Each inner plugin's options are exposed as a top-level key.
  * Pass `false` to disable a plugin entirely.
  */
-export interface CraftConfigOptions {
+export interface LaunchConfigOptions {
     /** Laravel Vite plugin options */
     laravel?: {
         input?: string[];
@@ -37,7 +37,7 @@ export interface CraftConfigOptions {
 
     /**
      * Enable i18n support. When true, injects initI18n() into app entry.
-     * The __ function becomes available via: import { __ } from '@hardimpactdev/craft-ui-react/i18n'
+     * The __ function becomes available via: import { __ } from '@hardimpactdev/launch-ui/i18n'
      */
     i18n?:
         | boolean
@@ -76,3 +76,8 @@ export interface CraftConfigOptions {
      */
     staged?: Record<string, string>;
 }
+
+/**
+ * @deprecated Use `LaunchConfigOptions` instead.
+ */
+export type CraftConfigOptions = LaunchConfigOptions;

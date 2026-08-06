@@ -1,24 +1,24 @@
 import { defineConfig } from "vite-plus";
 import type { UserConfig } from "vite-plus";
 import { getPlugins } from "./plugins.ts";
-import type { CraftConfigOptions } from "./types.ts";
+import type { LaunchConfigOptions, CraftConfigOptions } from "./types.ts";
 
-export type { CraftConfigOptions } from "./types.ts";
+export type { LaunchConfigOptions, CraftConfigOptions } from "./types.ts";
 export { getPlugins } from "./plugins.ts";
 
 /**
- * Create a complete Vite config for a Craft React app.
+ * Create a complete Vite config for a Launch React app.
  *
  * Returns a Promise<UserConfig> — Vite's defineConfig supports async functions.
  * The async is needed because plugin imports resolve from the consumer's node_modules.
  *
  * @example
- * import { defineCraftConfig } from '@hardimpactdev/craft-ui-react/vite';
- * export default defineCraftConfig();
+ * import { defineLaunchConfig } from '@hardimpactdev/launch-ui/vite';
+ * export default defineLaunchConfig();
  */
-export async function defineCraftConfig(options: CraftConfigOptions = {}) {
-    const { lint, staged, ...craftOptions } = options;
-    const plugins = await getPlugins(craftOptions);
+export async function defineLaunchConfig(options: LaunchConfigOptions = {}) {
+    const { lint, staged, ...launchOptions } = options;
+    const plugins = await getPlugins(launchOptions);
 
     return defineConfig(() => ({
         ...(lint ? { lint } : {}),
@@ -35,3 +35,8 @@ export async function defineCraftConfig(options: CraftConfigOptions = {}) {
         },
     } as UserConfig));
 }
+
+/**
+ * @deprecated Use `defineLaunchConfig` instead.
+ */
+export const defineCraftConfig = defineLaunchConfig;

@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { join } from "node:path";
-import type { PluginOption } from "vite-plus";
-import type { CraftConfigOptions } from "./types.ts";
+import type { PluginOption, ViteDevServer } from "vite-plus";
+import type { LaunchConfigOptions } from "./types.ts";
 
 /**
  * Import a package from the consumer project's node_modules.
@@ -39,10 +39,10 @@ async function importFromConsumer(pkg: string) {
 }
 
 /**
- * Assemble all Vite plugins for the Craft React stack
+ * Assemble all Vite plugins for the Launch React stack
  */
 export async function getPlugins(
-    options: CraftConfigOptions,
+    options: LaunchConfigOptions,
 ): Promise<PluginOption[]> {
     const [
         { default: laravel },
@@ -64,6 +64,7 @@ export async function getPlugins(
         process.env.VITE_APP_URL !== "";
 
     const plugins: PluginOption[] = [
+        launchAliasPlugin(),
         laravel({
             input: options.laravel?.input ?? ["resources/js/app.tsx"],
             ssr: options.laravel?.ssr,
@@ -98,14 +99,16 @@ export async function getPlugins(
     }
 
     if (options.i18n) {
-        const { craftI18nPlugin } = await import("./i18n-plugin.ts");
-        plugins.push(craftI18nPlugin(options.i18n));
+        const { launchI18nPlugin } = await import("./i18n-plugin.ts");
+        plugins.push(launchI18nPlugin(options.i18n));
     }
 
     if (options.agentation !== false) {
-        const { craftAgentationPlugin } = await import("./agentation-plugin.ts");
-        plugins.push(craftAgentationPlugin());
+        const { launchAgentationPlugin } = await import("./agentation-plugin.ts");
+        plugins.push(launchAgentationPlugin());
     }
+
+    plugins.push(launchPublicDevServerUrlPlugin());
 
     const runners = await getArtisanRunners();
     if (runners) {
@@ -117,6 +120,109 @@ export async function getPlugins(
     }
 
     return plugins;
+}
+
+function launchAliasPlugin(): PluginOption {
+    return {
+        name: "launch:alias-fallback",
+        config() {
+            return {
+                resolve: {
+                    alias: [
+                        {
+                            find: /^@hardimpactdev\/craft-ui-react\/vite$/,
+                            replacement: "@hardimpactdev/launch-ui/vite",
+                        },
+                        {
+                            find: /^@hardimpactdev\/craft-ui-react\/i18n$/,
+                            replacement: "@hardimpactdev/launch-ui/i18n",
+                        },
+                        {
+                            find: /^@hardimpactdev\/craft-ui-react\/agentation$/,
+                            replacement: "@hardimpactdev/launch-ui/agentation",
+                        },
+                        {
+                            find: /^@hardimpactdev\/craft-ui-react\/(.*)$/,
+                            replacement: "@hardimpactdev/launch-ui/$1",
+                        },
+                    ],
+                },
+            };
+        },
+    };
+}
+
+function launchPublicDevServerUrlPlugin(): PluginOption {
+    return {
+        name: "launch:public-dev-server-url",
+        apply: "serve",
+        configureServer(server) {
+            server.httpServer?.once("listening", () => {
+                const preferredUrl = getPublicDevServerUrl(server);
+
+                if (!preferredUrl || !server.resolvedUrls) {
+                    return;
+                }
+
+                server.resolvedUrls.local = preferUrl(
+                    server.resolvedUrls.local,
+                    preferredUrl,
+                );
+            });
+        },
+    };
+}
+
+function getPublicDevServerUrl(server: ViteDevServer): string | null {
+    const rawOrigin =
+        server.config.env.VITE_DEV_SERVER_ORIGIN
+        ?? server.config.env.VITE_APP_URL
+        ?? server.config.env.APP_URL;
+
+    if (typeof rawOrigin !== "string" || rawOrigin === "") {
+        return null;
+    }
+
+    try {
+        const url = new URL(rawOrigin);
+
+        if (url.protocol !== "http:" && url.protocol !== "https:") {
+            return null;
+        }
+
+        const address = server.httpServer?.address();
+        const port =
+            address && typeof address !== "string"
+                ? address.port
+                : server.config.server.port;
+
+        if (port) {
+            url.port = String(port);
+        }
+
+        url.pathname = "/";
+        url.search = "";
+        url.hash = "";
+
+        return url.toString();
+    } catch {
+        return null;
+    }
+}
+
+function preferUrl(urls: string[], preferredUrl: string): string[] {
+    const preferredOrigin = new URL(preferredUrl).origin;
+
+    return [
+        preferredUrl,
+        ...urls.filter((url) => {
+            try {
+                return new URL(url).origin !== preferredOrigin;
+            } catch {
+                return url !== preferredUrl;
+            }
+        }),
+    ];
 }
 
 async function getArtisanRunners(): Promise<PluginOption | null> {

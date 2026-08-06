@@ -1,19 +1,13 @@
 import type { Plugin } from "vite-plus";
 
-const VIRTUAL_MODULE_ID = "virtual:craft-agentation";
+const VIRTUAL_MODULE_ID = "virtual:launch-agentation";
 const RESOLVED_VIRTUAL_MODULE_ID = "\0" + VIRTUAL_MODULE_ID;
 
-/**
- * The agentation runtime — mounts the Agentation component, wires up
- * annotation count callbacks, and responds to toolbar state requests.
- *
- * Requires `agentation` npm package as a dev dependency in the consumer project.
- */
 const AGENTATION_RUNTIME = `
 function injectStyles() {
-    if (typeof document === "undefined") return;
+    if (document.getElementById("launch-agentation-styles") || document.getElementById("craft-agentation-styles")) return;
     const style = document.createElement("style");
-    style.id = "craft-agentation-styles";
+    style.id = "launch-agentation-styles";
     style.textContent = \`
         [data-agentation-toolbar] { display: none !important; }
         [data-agentation-toolbar].agentation-visible { display: block !important; }
@@ -88,7 +82,7 @@ export function mountAgentation() {
 `;
 
 const INIT_CODE = `
-import { mountAgentation } from "virtual:craft-agentation";
+import { mountAgentation } from "virtual:launch-agentation";
 if (typeof window !== "undefined") {
     mountAgentation();
 }
@@ -97,20 +91,21 @@ if (typeof window !== "undefined") {
 /**
  * Vite plugin that provides Agentation integration:
  * 1. A virtual module with mountAgentation()
- * 2. An alias so "@hardimpactdev/craft-ui-react/agentation" resolves to it
+ * 2. An alias so "@hardimpactdev/launch-ui/agentation" (and legacy "@hardimpactdev/craft-ui-react/agentation") resolves to it
  * 3. Auto-injection of mountAgentation() into the app entry point. The
  *    injected code is a lightweight listener; the agentation runtime itself
  *    is only downloaded when the laravel-toolbar is present on the page.
  */
-export function craftAgentationPlugin(): Plugin {
+export function launchAgentationPlugin(): Plugin {
     return {
-        name: "craft-agentation",
+        name: "launch-agentation",
         enforce: "pre",
 
         config() {
             return {
                 resolve: {
                     alias: {
+                        "@hardimpactdev/launch-ui/agentation": VIRTUAL_MODULE_ID,
                         "@hardimpactdev/craft-ui-react/agentation": VIRTUAL_MODULE_ID,
                     },
                 },
@@ -118,7 +113,12 @@ export function craftAgentationPlugin(): Plugin {
         },
 
         resolveId(id) {
-            if (id === VIRTUAL_MODULE_ID || id === "@hardimpactdev/craft-ui-react/agentation") {
+            if (
+                id === VIRTUAL_MODULE_ID ||
+                id === "virtual:craft-agentation" ||
+                id === "@hardimpactdev/launch-ui/agentation" ||
+                id === "@hardimpactdev/craft-ui-react/agentation"
+            ) {
                 return RESOLVED_VIRTUAL_MODULE_ID;
             }
         },
@@ -137,3 +137,8 @@ export function craftAgentationPlugin(): Plugin {
         },
     };
 }
+
+/**
+ * @deprecated Use `launchAgentationPlugin` instead.
+ */
+export const craftAgentationPlugin = launchAgentationPlugin;

@@ -1,7 +1,7 @@
 import type { Plugin } from "vite-plus";
-import type { CraftConfigOptions } from "./types.ts";
+import type { LaunchConfigOptions } from "./types.ts";
 
-const VIRTUAL_MODULE_ID = "virtual:craft-i18n";
+const VIRTUAL_MODULE_ID = "virtual:launch-i18n";
 const RESOLVED_VIRTUAL_MODULE_ID = "\0" + VIRTUAL_MODULE_ID;
 
 /**
@@ -28,7 +28,7 @@ export function initI18n(options) {
     locale = options.locale ?? "en";
     fallbackLocale = options.fallbackLocale ?? "en";
     for (const [path, mod] of Object.entries(options.files)) {
-        const match = path.match(/\\/([a-z]{2}(?:[-_][a-zA-Z]+)?)\\.json$/);
+        const match = path.match(/\\/([a-z]{2}(?:[-_][a-zA-Z]+)?)\\json$/);
         if (!match) continue;
         const lang = match[1].replace("-", "_");
         const translations = "default" in mod ? mod.default : mod;
@@ -70,13 +70,13 @@ export function __(key, replacements) {
 `;
 
 /**
- * Vite plugin that provides craft i18n:
- * 1. A virtual module "virtual:craft-i18n" with __, setLocale, getLocale, useLocale, initI18n
- * 2. An alias so "@hardimpactdev/craft-ui-react/i18n" resolves to the virtual module
+ * Vite plugin that provides launch i18n:
+ * 1. A virtual module "virtual:launch-i18n" with __, setLocale, getLocale, useLocale, initI18n
+ * 2. An alias so "@hardimpactdev/launch-ui/i18n" (and legacy "@hardimpactdev/craft-ui-react/i18n") resolves to the virtual module
  * 3. Auto-injection of initI18n() into the app entry point
  */
-export function craftI18nPlugin(
-    i18n: NonNullable<CraftConfigOptions["i18n"]>,
+export function launchI18nPlugin(
+    i18n: NonNullable<LaunchConfigOptions["i18n"]>,
 ): Plugin {
     const opts = typeof i18n === "object" ? i18n : {};
     const loc = opts.locale ?? "en";
@@ -84,22 +84,23 @@ export function craftI18nPlugin(
     const langPath = opts.langPath ?? "/lang/*.json";
 
     const initCode = `
-import { initI18n } from "virtual:craft-i18n";
+import { initI18n } from "virtual:launch-i18n";
 initI18n({
-    locale: "${loc}",
-    fallbackLocale: "${fallback}",
-    files: import.meta.glob("${langPath}", { eager: true }),
+    locale: "",
+    fallbackLocale: "",
+    files: import.meta.glob("", { eager: true }),
 });
 `;
 
     return {
-        name: "craft-i18n",
+        name: "launch-i18n",
         enforce: "pre",
 
         config() {
             return {
                 resolve: {
                     alias: {
+                        "@hardimpactdev/launch-ui/i18n": VIRTUAL_MODULE_ID,
                         "@hardimpactdev/craft-ui-react/i18n": VIRTUAL_MODULE_ID,
                     },
                 },
@@ -107,7 +108,12 @@ initI18n({
         },
 
         resolveId(id) {
-            if (id === VIRTUAL_MODULE_ID || id === "@hardimpactdev/craft-ui-react/i18n") {
+            if (
+                id === VIRTUAL_MODULE_ID ||
+                id === "virtual:craft-i18n" ||
+                id === "@hardimpactdev/launch-ui/i18n" ||
+                id === "@hardimpactdev/craft-ui-react/i18n"
+            ) {
                 return RESOLVED_VIRTUAL_MODULE_ID;
             }
         },
@@ -126,3 +132,8 @@ initI18n({
         },
     };
 }
+
+/**
+ * @deprecated Use `launchI18nPlugin` instead.
+ */
+export const craftI18nPlugin = launchI18nPlugin;
