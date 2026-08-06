@@ -551,9 +551,41 @@
     console.warn('unable to connect to top frame for connecting dev tools');
   }
 </script>
+<script>
+  (function() {
+    if (typeof window === 'undefined') return;
+
+    window.lruMemoize = window.lruMemoize || function(func) {
+      var cache = new Map();
+      return function() {
+        var args = Array.prototype.slice.call(arguments);
+        var key = args.map(function(a) { return typeof a === 'object' && a !== null ? (a.id || a.key || String(a)) : String(a); }).join('__');
+        if (cache.has(key)) return cache.get(key);
+        var result = func.apply(this, args);
+        cache.set(key, result);
+        return result;
+      };
+    };
+
+    window.createSelectorCreator = window.createSelectorCreator || function(memoizeFn) {
+      var memoize = memoizeFn || window.lruMemoize;
+      return function() {
+        var funcs = Array.prototype.slice.call(arguments);
+        var resultFunc = funcs.pop();
+        return memoize(function() {
+          var args = arguments;
+          var params = funcs.map(function(fn) {
+            return typeof fn === 'function' ? fn.apply(null, args) : fn;
+          });
+          return resultFunc.apply(null, params);
+        });
+      };
+    };
+  })();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <script type="module" crossorigin src="./assets/iframe-BO5it63R.js"></script>
+    <script type="module" crossorigin src="./assets/iframe-6KOUnMFo.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/preload-helper-CT_b8DTk.js">
     <link rel="modulepreload" crossorigin href="./assets/react-B7Te67-h.js">
     <link rel="modulepreload" crossorigin href="./assets/useRenderElement-CLC7beMa.js">

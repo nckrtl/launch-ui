@@ -1,0 +1,19 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{t}from"./jsx-runtime-DqZldVDK.js";import{a as n,o as r}from"./iframe-6KOUnMFo.js";import{n as i,t as a}from"./label-DJY16leu.js";import{i as o,n as s,t as c}from"./switch-AFlvcyFQ.js";function l({className:e,size:t=`default`,...r}){return(0,u.jsx)(o,{"data-slot":`switch`,"data-size":t,className:n(`peer group/switch relative inline-flex shrink-0 items-center rounded-full border border-transparent transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=default]:h-[18.4px] data-[size=default]:w-[32px] data-[size=sm]:h-[14px] data-[size=sm]:w-[24px] dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:bg-primary data-unchecked:bg-input dark:data-unchecked:bg-input/80 data-disabled:cursor-not-allowed data-disabled:opacity-50`,e),...r,children:(0,u.jsx)(s,{"data-slot":`switch-thumb`,className:`pointer-events-none block rounded-full bg-background ring-0 transition-transform group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:data-checked:translate-x-[calc(100%-2px)] group-data-[size=sm]/switch:data-checked:translate-x-[calc(100%-2px)] dark:data-checked:bg-primary-foreground group-data-[size=default]/switch:data-unchecked:translate-x-0 group-data-[size=sm]/switch:data-unchecked:translate-x-0 dark:data-unchecked:bg-foreground`})})}var u,d=e((()=>{c(),r(),u=t(),l.__docgenInfo={description:``,methods:[],displayName:`Switch`,props:{size:{required:!1,tsType:{name:`union`,raw:`"sm" | "default"`,elements:[{name:`literal`,value:`"sm"`},{name:`literal`,value:`"default"`}]},description:``,defaultValue:{value:`"default"`,computed:!1}}}}})),f,p,m,h,g,_,v,y;e((()=>{d(),i(),f=t(),p={title:`UI/Switch`,component:l,tags:[`autodocs`]},m={},h={args:{defaultChecked:!0}},g={render:()=>(0,f.jsxs)(`div`,{className:`flex items-center space-x-2`,children:[(0,f.jsx)(l,{id:`airplane-mode`}),(0,f.jsx)(a,{htmlFor:`airplane-mode`,children:`Airplane Mode`})]})},_={render:()=>(0,f.jsxs)(`div`,{className:`flex items-center space-x-2`,children:[(0,f.jsx)(l,{id:`small-switch`,size:`sm`}),(0,f.jsx)(a,{htmlFor:`small-switch`,children:`Small switch`})]})},v={args:{disabled:!0}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`{}`,...m.parameters?.docs?.source}}},h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultChecked: true
+  }
+}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+  render: () => <div className="flex items-center space-x-2">
+            <Switch id="airplane-mode" />
+            <Label htmlFor="airplane-mode">Airplane Mode</Label>
+        </div>
+}`,...g.parameters?.docs?.source}}},_.parameters={..._.parameters,docs:{..._.parameters?.docs,source:{originalSource:`{
+  render: () => <div className="flex items-center space-x-2">
+            <Switch id="small-switch" size="sm" />
+            <Label htmlFor="small-switch">Small switch</Label>
+        </div>
+}`,..._.parameters?.docs?.source}}},v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  }
+}`,...v.parameters?.docs?.source}}},y=[`Default`,`Checked`,`WithLabel`,`Small`,`Disabled`]}))();export{h as Checked,m as Default,v as Disabled,_ as Small,g as WithLabel,y as __namedExportsOrder,p as default};

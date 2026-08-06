@@ -1,0 +1,25 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./react-B7Te67-h.js";import{t as r}from"./jsx-runtime-DqZldVDK.js";import{a as i,o as a}from"./iframe-6KOUnMFo.js";import{At as o,Mt as s,Ot as c,W as l,c as u,t as d,wt as f}from"./lucide-react-DwrYPWFq.js";import{n as p,t as m}from"./toggle-YfBjfZ1a.js";import{n as h,t as g}from"./toggle-group-eGSkPh0Z.js";import{n as _,r as v}from"./toggle-BrBH3nDI.js";function y({className:e,variant:t,size:n,spacing:r=0,orientation:a=`horizontal`,children:o,...s}){return(0,S.jsx)(h,{"data-slot":`toggle-group`,"data-variant":t,"data-size":n,"data-spacing":r,"data-orientation":a,style:{"--gap":r},className:i(`group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-vertical:flex-col data-vertical:items-stretch`,e),...s,children:(0,S.jsx)(C.Provider,{value:{variant:t,size:n,spacing:r,orientation:a},children:o})})}function b({className:e,children:t,variant:n=`default`,size:r=`default`,...a}){let o=x.useContext(C);return(0,S.jsx)(p,{"data-slot":`toggle-group-item`,"data-variant":o.variant||n,"data-size":o.size||r,"data-spacing":o.spacing,className:i(`shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 focus:z-10 focus-visible:z-10 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-lg group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-lg group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-lg group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-lg group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t`,v({variant:o.variant||n,size:o.size||r}),e),...a,children:t})}var x,S,C,w=e((()=>{x=t(n(),1),m(),g(),a(),_(),S=r(),C=x.createContext({size:`default`,variant:`default`,spacing:0,orientation:`horizontal`}),y.__docgenInfo={description:``,methods:[],displayName:`ToggleGroup`,props:{spacing:{required:!1,tsType:{name:`number`},description:``,defaultValue:{value:`0`,computed:!1}},orientation:{required:!1,tsType:{name:`union`,raw:`"horizontal" | "vertical"`,elements:[{name:`literal`,value:`"horizontal"`},{name:`literal`,value:`"vertical"`}]},description:``,defaultValue:{value:`"horizontal"`,computed:!1}}}},b.__docgenInfo={description:``,methods:[],displayName:`ToggleGroupItem`,props:{variant:{defaultValue:{value:`"default"`,computed:!1},required:!1},size:{defaultValue:{value:`"default"`,computed:!1},required:!1}}}})),T,E,D,O,k;e((()=>{d(),w(),T=r(),E={title:`UI/ToggleGroup`,component:y,tags:[`autodocs`]},D={render:()=>(0,T.jsxs)(y,{type:`single`,defaultValue:`center`,children:[(0,T.jsx)(b,{value:`left`,"aria-label":`Align left`,children:(0,T.jsx)(c,{})}),(0,T.jsx)(b,{value:`center`,"aria-label":`Align center`,children:(0,T.jsx)(s,{})}),(0,T.jsx)(b,{value:`right`,"aria-label":`Align right`,children:(0,T.jsx)(o,{})})]})},O={render:()=>(0,T.jsxs)(y,{type:`multiple`,defaultValue:[`bold`],children:[(0,T.jsx)(b,{value:`bold`,"aria-label":`Toggle bold`,children:(0,T.jsx)(f,{})}),(0,T.jsx)(b,{value:`italic`,"aria-label":`Toggle italic`,children:(0,T.jsx)(l,{})}),(0,T.jsx)(b,{value:`underline`,"aria-label":`Toggle underline`,children:(0,T.jsx)(u,{})})]})},D.parameters={...D.parameters,docs:{...D.parameters?.docs,source:{originalSource:`{
+  render: () => <ToggleGroup type="single" defaultValue="center">
+            <ToggleGroupItem value="left" aria-label="Align left">
+                <AlignLeft />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="center" aria-label="Align center">
+                <AlignCenter />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="right" aria-label="Align right">
+                <AlignRight />
+            </ToggleGroupItem>
+        </ToggleGroup>
+}`,...D.parameters?.docs?.source}}},O.parameters={...O.parameters,docs:{...O.parameters?.docs,source:{originalSource:`{
+  render: () => <ToggleGroup type="multiple" defaultValue={['bold']}>
+            <ToggleGroupItem value="bold" aria-label="Toggle bold">
+                <Bold />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="italic" aria-label="Toggle italic">
+                <Italic />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <Underline />
+            </ToggleGroupItem>
+        </ToggleGroup>
+}`,...O.parameters?.docs?.source}}},k=[`Single`,`Multiple`]}))();export{O as Multiple,D as Single,k as __namedExportsOrder,E as default};
