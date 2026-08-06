@@ -11,7 +11,7 @@ import {
     MenubarSubTrigger,
     MenubarSubContent,
     MenubarCheckboxItem,
-} from '../../storybook-utils/components/ui/menubar';
+} from '@/components/ui/menubar';
 
 const meta: Meta<typeof Menubar> = {
     title: 'UI/Menubar',

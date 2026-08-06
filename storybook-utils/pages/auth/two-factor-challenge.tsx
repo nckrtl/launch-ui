@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/auth/two-factor-challenge';
+export { default } from '@registry/pages/auth/two-factor-challenge';

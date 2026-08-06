@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/settings/appearance';
+export { default } from '@registry/pages/settings/appearance';

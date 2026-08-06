@@ -6,7 +6,7 @@ import {
     ComboboxInput,
     ComboboxItem,
     ComboboxList,
-} from '../../storybook-utils/components/ui/combobox';
+} from '@/components/ui/combobox';
 
 const meta: Meta<typeof Combobox> = {
     title: 'UI/Combobox',

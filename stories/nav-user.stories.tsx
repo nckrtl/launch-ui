@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { NavUser } from '../storybook-utils/components/nav-user';
+import { NavUser } from '@/components/nav-user';
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
     SidebarProvider,
-} from '../storybook-utils/components/ui/sidebar';
+} from '@/components/ui/sidebar';
 
 const meta: Meta<typeof NavUser> = {
     title: 'App/NavUser',

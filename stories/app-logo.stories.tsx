@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppLogo from '../storybook-utils/components/app-logo';
+import AppLogo from '@/components/app-logo';
 
 const meta: Meta<typeof AppLogo> = {
     title: 'App/AppLogo',

@@ -1,1 +1,1 @@
-export { AppSidebar } from '../../registry/craft/components/app-sidebar';
+export { AppSidebar } from '@registry/components/app-sidebar';

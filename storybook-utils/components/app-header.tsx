@@ -1,1 +1,1 @@
-export { AppHeader } from '../../registry/craft/components/app-header';
+export { AppHeader } from '@registry/components/app-header';

@@ -1,1 +1,1 @@
-export { PlaceholderPattern } from '../../../registry/craft/ui/placeholder-pattern';
+export { PlaceholderPattern } from '@registry/ui/placeholder-pattern';

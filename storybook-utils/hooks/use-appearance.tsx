@@ -1,1 +1,1 @@
-export * from '../../registry/craft/hooks/use-appearance';
+export * from '@registry/hooks/use-appearance';

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AlignCenter, AlignLeft, AlignRight, Bold, Italic, Underline } from 'lucide-react';
-import { ToggleGroup, ToggleGroupItem } from '../../storybook-utils/components/ui/toggle-group';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const meta: Meta<typeof ToggleGroup> = {
     title: 'UI/ToggleGroup',

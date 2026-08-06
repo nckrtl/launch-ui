@@ -136,3 +136,14 @@ export function useForm(initialValues: any = {}) {
         hasErrors: false,
     };
 }
+
+export function useHttp() {
+    return {
+        get: () => Promise.resolve({ data: {} }),
+        post: () => Promise.resolve({ data: {} }),
+        put: () => Promise.resolve({ data: {} }),
+        patch: () => Promise.resolve({ data: {} }),
+        delete: () => Promise.resolve({ data: {} }),
+    };
+}
+

@@ -1,1 +1,1 @@
-export { AppContent } from '../../registry/craft/components/app-content';
+export { AppContent } from '@registry/components/app-content';

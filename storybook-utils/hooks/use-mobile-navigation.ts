@@ -1,1 +1,1 @@
-export * from '../../registry/craft/hooks/use-mobile-navigation';
+export * from '@registry/hooks/use-mobile-navigation';

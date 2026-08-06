@@ -5,7 +5,7 @@ import {
     ChartTooltip,
     ChartTooltipContent,
     type ChartConfig,
-} from '../../storybook-utils/components/ui/chart';
+} from '@/components/ui/chart';
 
 const meta: Meta<typeof ChartContainer> = {
     title: 'UI/Chart',

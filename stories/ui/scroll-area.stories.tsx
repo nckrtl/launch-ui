@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ScrollArea } from '../../storybook-utils/components/ui/scroll-area';
-import { Separator } from '../../storybook-utils/components/ui/separator';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 
 const meta: Meta<typeof ScrollArea> = {
     title: 'UI/ScrollArea',

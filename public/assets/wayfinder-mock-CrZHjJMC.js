@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";var t,n,r,i=e((()=>{t=Object.assign((...e)=>({url:`#`,method:`get`}),{form:(...e)=>({action:`#`,method:`post`})}),n=t,r=t}));export{n as i,t as n,i as r,r as t};

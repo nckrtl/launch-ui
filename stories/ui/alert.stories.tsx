@@ -4,7 +4,7 @@ import {
     Alert,
     AlertDescription,
     AlertTitle,
-} from '../../storybook-utils/components/ui/alert';
+} from '@/components/ui/alert';
 
 const meta: Meta<typeof Alert> = {
     title: 'UI/Alert',

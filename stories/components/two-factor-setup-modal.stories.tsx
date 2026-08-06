@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import TwoFactorSetupModal from '../../storybook-utils/components/two-factor-setup-modal';
+import TwoFactorSetupModal from '@/components/two-factor-setup-modal';
 
 const meta: Meta<typeof TwoFactorSetupModal> = {
     title: 'Components/TwoFactorSetupModal',

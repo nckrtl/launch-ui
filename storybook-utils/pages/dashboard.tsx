@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/dashboard';
+export { default } from '@registry/pages/dashboard';

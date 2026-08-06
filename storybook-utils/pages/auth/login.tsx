@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/auth/login';
+export { default } from '@registry/pages/auth/login';

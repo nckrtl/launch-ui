@@ -3,9 +3,9 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '../storybook-utils/components/ui/dropdown-menu';
-import { Button } from '../storybook-utils/components/ui/button';
-import { UserMenuContent } from '../storybook-utils/components/user-menu-content';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { UserMenuContent } from '@/components/user-menu-content';
 
 const mockUser = {
     id: 1,

@@ -6,7 +6,7 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from '../../storybook-utils/components/ui/breadcrumb';
+} from '@/components/ui/breadcrumb';
 
 const meta: Meta<typeof Breadcrumb> = {
     title: 'UI/Breadcrumb',

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { userEvent, within } from '@storybook/test';
-import TwoFactorSection from '../../storybook-utils/components/two-factor-section';
+import TwoFactorSection from '@/components/two-factor-section';
 
 const meta: Meta<typeof TwoFactorSection> = {
     title: 'Components/TwoFactorSection',

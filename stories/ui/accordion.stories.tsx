@@ -4,7 +4,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from '../../storybook-utils/components/ui/accordion';
+} from '@/components/ui/accordion';
 
 const meta: Meta<typeof Accordion> = {
     title: 'UI/Accordion',

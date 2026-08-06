@@ -1,1 +1,1 @@
-export { Breadcrumbs } from '../../registry/craft/components/breadcrumbs';
+export { Breadcrumbs } from '@registry/components/breadcrumbs';

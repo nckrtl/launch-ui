@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/auth/confirm-password';
+export { default } from '@registry/pages/auth/confirm-password';

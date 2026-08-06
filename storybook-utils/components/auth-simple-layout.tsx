@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/blocks/auth-simple-layout';
+export { default } from '@registry/blocks/auth-simple-layout';

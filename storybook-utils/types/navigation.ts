@@ -1,1 +1,1 @@
-export * from '../../registry/craft/lib/types';
+export * from '@registry/lib/types';

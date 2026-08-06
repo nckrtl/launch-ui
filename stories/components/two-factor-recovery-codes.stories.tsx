@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import TwoFactorRecoveryCodes from '../../storybook-utils/components/two-factor-recovery-codes';
+import TwoFactorRecoveryCodes from '@/components/two-factor-recovery-codes';
 
 const meta: Meta<typeof TwoFactorRecoveryCodes> = {
     title: 'Components/TwoFactorRecoveryCodes',

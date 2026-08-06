@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/blocks/app-header-layout';
+export { default } from '@registry/blocks/app-header-layout';

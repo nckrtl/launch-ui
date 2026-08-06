@@ -34,7 +34,7 @@
     "dev": "storybook dev -p 6006",
     "build": "shadcn build",
     "build:lib": "vp pack src/vite/index.ts src/vite/agentation-plugin.ts --dts --format esm --out-dir dist",
-    "build:storybook": "storybook build",
+    "build:storybook": "storybook build && rsync -a storybook-static/ public/",
     "serve": "npx http-server public -p 4100 -c-1 --cors"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-themes": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
+    "@storybook/test": "^8.6.15",
     "@tailwindcss/vite": "^4.2.1",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",

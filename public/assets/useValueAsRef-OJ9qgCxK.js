@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{b as t,y as n}from"./useRenderElement-CLC7beMa.js";import{i as r,r as i}from"./safeReact-hvdH3RtA.js";function a(e){let n=t(o,e).current;return n.next=e,r(n.effect),n}function o(e){let t={current:e,next:e,effect:()=>{t.current=t.next}};return t}var s=e((()=>{i(),n()}));export{a as n,s as t};

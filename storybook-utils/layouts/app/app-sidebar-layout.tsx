@@ -1,1 +1,1 @@
-export { default } from '../../../registry/craft/blocks/app-sidebar-layout';
+export { default } from '@registry/blocks/app-sidebar-layout';

@@ -1,1 +1,1 @@
-export { NavFooter } from '../../registry/craft/components/nav-footer';
+export { NavFooter } from '@registry/components/nav-footer';

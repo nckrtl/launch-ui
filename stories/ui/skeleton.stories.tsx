@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Skeleton } from '../../storybook-utils/components/ui/skeleton';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const meta: Meta<typeof Skeleton> = {
     title: 'UI/Skeleton',

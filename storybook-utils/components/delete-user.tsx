@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/delete-user';
+export { default } from '@registry/components/delete-user';

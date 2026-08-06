@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BookOpen, Folder } from 'lucide-react';
-import { NavFooter } from '../storybook-utils/components/nav-footer';
+import { NavFooter } from '@/components/nav-footer';
 import {
     Sidebar,
     SidebarContent,
     SidebarProvider,
-} from '../storybook-utils/components/ui/sidebar';
+} from '@/components/ui/sidebar';
 
 const meta: Meta<typeof NavFooter> = {
     title: 'App/NavFooter',

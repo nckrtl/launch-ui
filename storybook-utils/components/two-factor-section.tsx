@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/two-factor-section';
+export { default } from '@registry/components/two-factor-section';

@@ -10,7 +10,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
     SidebarProvider,
-} from '../../storybook-utils/components/ui/sidebar';
+} from '@/components/ui/sidebar';
 
 const meta: Meta<typeof Sidebar> = {
     title: 'UI/Sidebar',

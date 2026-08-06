@@ -6,7 +6,7 @@ import {
     InputGroupInput,
     InputGroupButton,
     InputGroupText,
-} from '../../storybook-utils/components/ui/input-group';
+} from '@/components/ui/input-group';
 
 const meta: Meta<typeof InputGroup> = {
     title: 'UI/InputGroup',

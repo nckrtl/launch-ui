@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/blocks/app-layout';
+export { default } from '@registry/blocks/app-layout';

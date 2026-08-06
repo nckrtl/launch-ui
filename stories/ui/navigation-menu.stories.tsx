@@ -5,7 +5,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     navigationMenuTriggerStyle,
-} from '../../storybook-utils/components/ui/navigation-menu';
+} from '@/components/ui/navigation-menu';
 
 const meta: Meta<typeof NavigationMenu> = {
     title: 'UI/NavigationMenu',

@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/input-error';
+export { default } from '@registry/components/input-error';

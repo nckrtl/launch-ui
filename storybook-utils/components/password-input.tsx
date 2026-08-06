@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/password-input';
+export { default } from '@registry/components/password-input';

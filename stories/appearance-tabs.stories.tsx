@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppearanceToggleTab from '../storybook-utils/components/appearance-tabs';
+import AppearanceToggleTab from '@/components/appearance-tabs';
 
 const meta: Meta<typeof AppearanceToggleTab> = {
     title: 'App/AppearanceToggleTab',

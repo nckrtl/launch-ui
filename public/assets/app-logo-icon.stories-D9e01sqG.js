@@ -1,0 +1,3 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{t}from"./jsx-runtime-DqZldVDK.js";import{n,t as r}from"./app-logo-icon-CXvEIyAs.js";var i,a,o,s;e((()=>{r(),i=t(),a={title:`App/AppLogoIcon`,component:n,tags:[`autodocs`]},o={render:()=>(0,i.jsx)(n,{className:`h-10 w-10 fill-current text-black dark:text-white`})},o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
+  render: () => <AppLogoIcon className="h-10 w-10 fill-current text-black dark:text-white" />
+}`,...o.parameters?.docs?.source}}},s=[`Default`]}))();export{o as Default,s as __namedExportsOrder,a as default};

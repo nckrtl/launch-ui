@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AuthSimpleLayout from '../storybook-utils/components/auth-simple-layout';
-import { Button } from '../storybook-utils/components/ui/button';
-import { Input } from '../storybook-utils/components/ui/input';
-import { Label } from '../storybook-utils/components/ui/label';
+import AuthSimpleLayout from '@/components/auth-simple-layout';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const meta: Meta<typeof AuthSimpleLayout> = {
     title: 'Layouts/AuthSimpleLayout',

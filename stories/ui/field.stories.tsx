@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Input } from '../../storybook-utils/components/ui/input';
+import { Input } from '@/components/ui/input';
 import {
     Field,
     FieldLabel,
@@ -7,7 +7,7 @@ import {
     FieldError,
     FieldGroup,
     FieldContent,
-} from '../../storybook-utils/components/ui/field';
+} from '@/components/ui/field';
 
 const meta: Meta<typeof Field> = {
     title: 'UI/Field',

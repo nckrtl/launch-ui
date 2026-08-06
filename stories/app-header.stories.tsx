@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AppHeader } from '../storybook-utils/components/app-header';
+import { AppHeader } from '@/components/app-header';
 
 const meta: Meta<typeof AppHeader> = {
     title: 'App/AppHeader',

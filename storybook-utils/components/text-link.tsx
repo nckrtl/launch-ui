@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/text-link';
+export { default } from '@registry/components/text-link';

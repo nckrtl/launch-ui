@@ -1,1 +1,1 @@
-export { NavMain } from '../../registry/craft/components/nav-main';
+export { NavMain } from '@registry/components/nav-main';

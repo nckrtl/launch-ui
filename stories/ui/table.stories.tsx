@@ -8,7 +8,7 @@ import {
     TableHeader,
     TableRow,
     TableFooter,
-} from '../../storybook-utils/components/ui/table';
+} from '@/components/ui/table';
 
 const meta: Meta<typeof Table> = {
     title: 'UI/Table',

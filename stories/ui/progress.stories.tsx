@@ -3,7 +3,7 @@ import {
     Progress,
     ProgressLabel,
     ProgressValue,
-} from '../../storybook-utils/components/ui/progress';
+} from '@/components/ui/progress';
 
 const meta: Meta<typeof Progress> = {
     title: 'UI/Progress',

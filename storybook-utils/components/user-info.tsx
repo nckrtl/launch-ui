@@ -1,1 +1,1 @@
-export { UserInfo } from '../../registry/craft/components/user-info';
+export { UserInfo } from '@registry/components/user-info';

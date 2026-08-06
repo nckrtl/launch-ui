@@ -1,0 +1,5 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";import{t}from"./jsx-runtime-DqZldVDK.js";import{n,t as r}from"./placeholder-pattern-BLPRogh3.js";var i,a,o,s;e((()=>{r(),i=t(),a={title:`UI/PlaceholderPattern`,component:n,tags:[`autodocs`]},o={render:()=>(0,i.jsx)(`div`,{className:`h-[200px] w-[400px] overflow-hidden rounded-lg border`,children:(0,i.jsx)(n,{className:`h-full w-full stroke-neutral-900/20 dark:stroke-neutral-100/20`})})},o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
+  render: () => <div className="h-[200px] w-[400px] overflow-hidden rounded-lg border">
+            <PlaceholderPattern className="h-full w-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+        </div>
+}`,...o.parameters?.docs?.source}}},s=[`Default`]}))();export{o as Default,s as __namedExportsOrder,a as default};

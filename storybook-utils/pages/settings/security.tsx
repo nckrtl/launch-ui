@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/settings/security';
+export { default } from '@registry/pages/settings/security';

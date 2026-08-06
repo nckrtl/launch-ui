@@ -3,7 +3,7 @@ import {
     ResizablePanelGroup,
     ResizablePanel,
     ResizableHandle,
-} from '../../storybook-utils/components/ui/resizable';
+} from '@/components/ui/resizable';
 
 const meta: Meta<typeof ResizablePanelGroup> = {
     title: 'UI/Resizable',

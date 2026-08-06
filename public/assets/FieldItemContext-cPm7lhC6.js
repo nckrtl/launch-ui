@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-CT_b8DTk.js";import{t as n}from"./react-B7Te67-h.js";function r(){return i.useContext(a)}var i,a,o=e((()=>{i=t(n(),1),a=i.createContext({disabled:!1})}));export{r as n,o as t};

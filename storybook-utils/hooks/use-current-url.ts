@@ -1,1 +1,1 @@
-export * from '../../registry/craft/hooks/use-current-url';
+export * from '@registry/hooks/use-current-url';

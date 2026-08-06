@@ -3,7 +3,7 @@ import {
     NativeSelect,
     NativeSelectOption,
     NativeSelectOptGroup,
-} from '../../storybook-utils/components/ui/native-select';
+} from '@/components/ui/native-select';
 
 const meta: Meta<typeof NativeSelect> = {
     title: 'UI/NativeSelect',

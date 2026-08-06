@@ -5,7 +5,7 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from '../../storybook-utils/components/ui/carousel';
+} from '@/components/ui/carousel';
 
 const meta: Meta<typeof Carousel> = {
     title: 'UI/Carousel',

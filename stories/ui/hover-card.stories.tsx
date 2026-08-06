@@ -3,7 +3,7 @@ import {
     HoverCard,
     HoverCardTrigger,
     HoverCardContent,
-} from '../../storybook-utils/components/ui/hover-card';
+} from '@/components/ui/hover-card';
 
 const meta: Meta<typeof HoverCard> = {
     title: 'UI/HoverCard',

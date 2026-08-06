@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import TextLink from '../storybook-utils/components/text-link';
+import TextLink from '@/components/text-link';
 
 const meta: Meta<typeof TextLink> = {
     title: 'App/TextLink',

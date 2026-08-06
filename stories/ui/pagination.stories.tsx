@@ -7,7 +7,7 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from '../../storybook-utils/components/ui/pagination';
+} from '@/components/ui/pagination';
 
 const meta: Meta<typeof Pagination> = {
     title: 'UI/Pagination',

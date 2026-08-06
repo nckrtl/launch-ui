@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/auth/verify-email';
+export { default } from '@registry/pages/auth/verify-email';

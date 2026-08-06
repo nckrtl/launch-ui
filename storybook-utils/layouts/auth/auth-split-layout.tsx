@@ -1,1 +1,1 @@
-export { default } from '../../../registry/craft/blocks/auth-split-layout';
+export { default } from '@registry/blocks/auth-split-layout';

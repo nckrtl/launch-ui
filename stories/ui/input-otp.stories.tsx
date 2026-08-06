@@ -4,7 +4,7 @@ import {
     InputOTPGroup,
     InputOTPSlot,
     InputOTPSeparator,
-} from '../../storybook-utils/components/ui/input-otp';
+} from '@/components/ui/input-otp';
 
 const meta: Meta<typeof InputOTP> = {
     title: 'UI/InputOTP',

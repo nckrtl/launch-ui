@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/pages/settings/profile';
+export { default } from '@registry/pages/settings/profile';

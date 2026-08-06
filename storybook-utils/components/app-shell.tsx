@@ -1,1 +1,1 @@
-export { AppShell } from '../../registry/craft/components/app-shell';
+export { AppShell } from '@registry/components/app-shell';

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { type ReactNode, useCallback, useState } from 'react';
-import SettingsLayout from '../../storybook-utils/components/settings-layout';
-import AppearancePage from '../../storybook-utils/pages/settings/appearance';
-import ProfilePage from '../../storybook-utils/pages/settings/profile';
-import SecurityPage from '../../storybook-utils/pages/settings/security';
-import type { TwoFactorSectionProps } from '../../storybook-utils/pages/settings/types';
-import type { PasswordForm, ProfileForm } from '../../storybook-utils/pages/settings/types';
+import SettingsLayout from '@/components/settings-layout';
+import AppearancePage from '@/pages/settings/appearance';
+import ProfilePage from '@/pages/settings/profile';
+import SecurityPage from '@/pages/settings/security';
+import type { TwoFactorSectionProps } from '@/pages/settings/types';
+import type { PasswordForm, ProfileForm } from '@/pages/settings/types';
 
 const mockUser = {
     id: 1,

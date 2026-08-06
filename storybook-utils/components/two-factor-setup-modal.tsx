@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/two-factor-setup-modal';
+export { default } from '@registry/components/two-factor-setup-modal';

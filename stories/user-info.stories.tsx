@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { UserInfo } from '../storybook-utils/components/user-info';
+import { UserInfo } from '@/components/user-info';
 
 const mockUser = {
     id: 1,

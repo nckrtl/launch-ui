@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AppSidebar } from '../storybook-utils/components/app-sidebar';
-import { SidebarProvider } from '../storybook-utils/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 const meta: Meta<typeof AppSidebar> = {
     title: 'App/AppSidebar',

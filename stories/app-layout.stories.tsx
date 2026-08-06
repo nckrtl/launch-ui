@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppLayout from '../storybook-utils/components/app-layout';
+import AppLayout from '@/components/app-layout';
 
 const meta: Meta<typeof AppLayout> = {
     title: 'Layouts/AppLayout',

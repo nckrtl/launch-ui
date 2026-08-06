@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/appearance-tabs';
+export { default } from '@registry/components/appearance-tabs';

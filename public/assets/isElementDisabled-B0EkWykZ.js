@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-CT_b8DTk.js";function t(e){return e==null||e.hasAttribute(`disabled`)||e.getAttribute(`aria-disabled`)===`true`}var n=e((()=>{}));export{t as n,n as t};

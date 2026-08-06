@@ -1,1 +1,1 @@
-export * from '../../registry/craft/hooks/use-clipboard';
+export * from '@registry/hooks/use-clipboard';

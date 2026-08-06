@@ -1,1 +1,1 @@
-export * from '../../../registry/craft/pages/settings/types';
+export * from '@registry/pages/settings/types';

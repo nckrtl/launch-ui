@@ -1,1 +1,1 @@
-export * from '../../registry/craft/hooks/use-initials';
+export * from '@registry/hooks/use-initials';

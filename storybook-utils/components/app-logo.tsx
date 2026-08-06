@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/components/app-logo';
+export { default } from '@registry/components/app-logo';

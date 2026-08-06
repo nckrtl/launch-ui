@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { PlaceholderPattern } from '../../storybook-utils/components/ui/placeholder-pattern';
+import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 
 const meta: Meta<typeof PlaceholderPattern> = {
     title: 'UI/PlaceholderPattern',

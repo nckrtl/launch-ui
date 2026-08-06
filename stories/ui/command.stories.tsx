@@ -16,7 +16,7 @@ import {
     CommandList,
     CommandSeparator,
     CommandShortcut,
-} from '../../storybook-utils/components/ui/command';
+} from '@/components/ui/command';
 
 const meta: Meta<typeof Command> = {
     title: 'UI/Command',

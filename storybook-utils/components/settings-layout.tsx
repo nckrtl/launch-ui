@@ -1,1 +1,1 @@
-export { default } from '../../registry/craft/blocks/settings-layout';
+export { default } from '@registry/blocks/settings-layout';

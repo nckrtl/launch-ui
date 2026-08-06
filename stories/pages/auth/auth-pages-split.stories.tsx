@@ -7,14 +7,14 @@ import type {
     ResetPasswordPageProps,
     TwoFactorChallengePageProps,
     VerifyEmailPageProps,
-} from '../../storybook-utils/pages/auth/types';
-import LoginPage from '../../storybook-utils/pages/auth/login';
-import RegisterPage from '../../storybook-utils/pages/auth/register';
-import ForgotPasswordPage from '../../storybook-utils/pages/auth/forgot-password';
-import ResetPasswordPage from '../../storybook-utils/pages/auth/reset-password';
-import ConfirmPasswordPage from '../../storybook-utils/pages/auth/confirm-password';
-import VerifyEmailPage from '../../storybook-utils/pages/auth/verify-email';
-import TwoFactorChallengePage from '../../storybook-utils/pages/auth/two-factor-challenge';
+} from '@/pages/auth/types';
+import LoginPage from '@/pages/auth/login';
+import RegisterPage from '@/pages/auth/register';
+import ForgotPasswordPage from '@/pages/auth/forgot-password';
+import ResetPasswordPage from '@/pages/auth/reset-password';
+import ConfirmPasswordPage from '@/pages/auth/confirm-password';
+import VerifyEmailPage from '@/pages/auth/verify-email';
+import TwoFactorChallengePage from '@/pages/auth/two-factor-challenge';
 
 const MockLogo = () => <span className="rounded bg-muted px-2 py-1 text-xs">LOGO</span>;
 

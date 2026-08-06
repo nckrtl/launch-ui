@@ -8,8 +8,8 @@ import {
     ItemDescription,
     ItemActions,
     ItemGroup,
-} from '../../storybook-utils/components/ui/item';
-import { Button } from '../../storybook-utils/components/ui/button';
+} from '@/components/ui/item';
+import { Button } from '@/components/ui/button';
 
 const meta: Meta<typeof Item> = {
     title: 'UI/Item',

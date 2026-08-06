@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AppShell } from '../storybook-utils/components/app-shell';
+import { AppShell } from '@/components/app-shell';
 
 const meta: Meta<typeof AppShell> = {
     title: 'App/AppShell',

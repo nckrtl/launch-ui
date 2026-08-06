@@ -1,1 +1,1 @@
-export { NavUser } from '../../registry/craft/components/nav-user';
+export { NavUser } from '@registry/components/nav-user';

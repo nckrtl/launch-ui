@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppSidebarLayout from '../storybook-utils/components/app-sidebar-layout';
-import DashboardPage from '../storybook-utils/pages/dashboard';
+import AppSidebarLayout from '@/components/app-sidebar-layout';
+import DashboardPage from '@/pages/dashboard';
 
 const meta: Meta = {
     title: 'Pages/Dashboard',

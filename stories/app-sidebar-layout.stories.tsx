@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppSidebarLayout from '../storybook-utils/components/app-sidebar-layout';
+import AppSidebarLayout from '@/components/app-sidebar-layout';
 
 const meta: Meta<typeof AppSidebarLayout> = {
     title: 'Layouts/AppSidebarLayout',

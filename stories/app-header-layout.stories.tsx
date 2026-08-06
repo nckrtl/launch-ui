@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import AppHeaderLayout from '../storybook-utils/components/app-header-layout';
+import AppHeaderLayout from '@/components/app-header-layout';
 
 const meta: Meta<typeof AppHeaderLayout> = {
     title: 'Layouts/AppHeaderLayout',

@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
     stories: ['../stories/**/*.stories.@(ts|tsx)'],
+    staticDirs: ['../public'],
     core: {
         disableWhatsNewNotifications: true,
     },
@@ -29,10 +30,19 @@ const config: StorybookConfig = {
     viteFinal: async (config) => {
         config.plugins = config.plugins || [];
         config.plugins.push(tailwindcss());
+        config.plugins.push({
+            name: 'wayfinder-mock-fallback',
+            resolveId(source) {
+                if (source.includes('routes/') || source.includes('actions/')) {
+                    return path.resolve(__dirname, 'wayfinder-mock.ts');
+                }
+            },
+        });
 
         config.resolve = config.resolve || {};
         config.resolve.alias = {
             ...config.resolve.alias,
+            '@registry': path.resolve(__dirname, '../registry/craft'),
             '@inertiajs/react': path.resolve(__dirname, 'inertia-react-mock.tsx'),
             '@': path.resolve(__dirname, '../storybook-utils'),
         };
