@@ -52,7 +52,7 @@ export function mountAgentation() {
         if (loaded) return;
         loaded = true;
 
-        import("agentation").then(({ Agentation }) => {
+        import(/* @vite-ignore */ "agentation").then(({ Agentation }) => {
             import("react-dom/client").then(({ createRoot }) => {
                 import("react/jsx-runtime").then(({ jsx }) => {
                     const container = document.createElement("div");
