@@ -79,7 +79,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
-          registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
 
@@ -91,7 +90,5 @@ jobs:
         env:
           VERSION: ${{ needs.auto-release.outputs.version }}
 
-      - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm (OIDC trusted publishing)
+        run: npm publish --access public
