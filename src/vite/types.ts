@@ -51,10 +51,9 @@ export interface LaunchConfigOptions {
           };
 
     /**
-     * Agentation integration (enabled by default). Auto-mounts the Agentation
-     * component in dev mode with annotation count tracking for the toolbar.
-     * Requires `agentation` npm package as a dev dependency.
-     * Set to `false` to disable.
+     * @deprecated Has no effect. Agentation moved out of the frontend build
+     * into the toolbar itself, which ships the runtime prebuilt:
+     * `composer require --dev nckrtl/laravel-toolbar-agentation`.
      */
     agentation?: boolean;
 

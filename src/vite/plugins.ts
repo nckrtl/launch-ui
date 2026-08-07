@@ -103,9 +103,10 @@ export async function getPlugins(
         plugins.push(launchI18nPlugin(options.i18n));
     }
 
-    if (options.agentation !== false) {
-        const { launchAgentationPlugin } = await import("./agentation-plugin.ts");
-        plugins.push(launchAgentationPlugin());
+    if (options.agentation) {
+        console.warn(
+            "[launch-ui] The `agentation` option no longer does anything. Agentation now ships with the toolbar: `composer require --dev nckrtl/laravel-toolbar-agentation`.",
+        );
     }
 
     plugins.push(launchPublicDevServerUrlPlugin());
@@ -136,10 +137,6 @@ function launchAliasPlugin(): PluginOption {
                         {
                             find: /^@nckrtl\/craft-ui-react\/i18n$/,
                             replacement: "@nckrtl/launch-ui/i18n",
-                        },
-                        {
-                            find: /^@nckrtl\/craft-ui-react\/agentation$/,
-                            replacement: "@nckrtl/launch-ui/agentation",
                         },
                         {
                             find: /^@nckrtl\/craft-ui-react\/(.*)$/,

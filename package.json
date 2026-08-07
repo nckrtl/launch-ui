@@ -24,17 +24,13 @@
     "./vite": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
-    },
-    "./agentation": {
-      "types": "./dist/agentation-plugin.d.mts",
-      "default": "./dist/agentation-plugin.mjs"
     }
   },
   "scripts": {
     "test": "node --test tests/*.test.ts",
     "dev": "storybook dev -p 6006",
     "build": "shadcn build",
-    "build:lib": "vp pack src/vite/index.ts src/vite/agentation-plugin.ts --dts --format esm --out-dir dist",
+    "build:lib": "vp pack src/vite/index.ts --dts --format esm --out-dir dist",
     "build:storybook": "storybook build && rsync -a storybook-static/ public/",
     "serve": "npx http-server public -p 4100 -c-1 --cors"
   },
