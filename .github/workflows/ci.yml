@@ -22,6 +22,10 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.next_version.outputs.version }}
 
     steps:
       - name: Checkout code
@@ -51,8 +55,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag ${{ steps.next_version.outputs.version }}
           git push origin ${{ steps.next_version.outputs.version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -60,4 +62,35 @@ jobs:
           tag_name: ${{ steps.next_version.outputs.version }}
           generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+
+  publish:
+    needs: auto-release
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm install
+
+      - name: Build library
+        run: npm run build:lib
+
+      - name: Set version from release tag
+        run: npm version "${VERSION#v}" --no-git-tag-version --allow-same-version
+        env:
+          VERSION: ${{ needs.auto-release.outputs.version }}
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
