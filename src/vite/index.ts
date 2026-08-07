@@ -13,7 +13,7 @@ export { getPlugins } from "./plugins.ts";
  * The async is needed because plugin imports resolve from the consumer's node_modules.
  *
  * @example
- * import { defineLaunchConfig } from '@hardimpactdev/launch-ui/vite';
+ * import { defineLaunchConfig } from '@nckrtl/launch-ui/vite';
  * export default defineLaunchConfig();
  */
 export async function defineLaunchConfig(options: LaunchConfigOptions = {}) {

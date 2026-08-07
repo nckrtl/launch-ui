@@ -91,7 +91,7 @@ if (typeof window !== "undefined") {
 /**
  * Vite plugin that provides Agentation integration:
  * 1. A virtual module with mountAgentation()
- * 2. An alias so "@hardimpactdev/launch-ui/agentation" (and legacy "@hardimpactdev/craft-ui-react/agentation") resolves to it
+ * 2. An alias so "@nckrtl/launch-ui/agentation" (and legacy "@nckrtl/craft-ui-react/agentation") resolves to it
  * 3. Auto-injection of mountAgentation() into the app entry point. The
  *    injected code is a lightweight listener; the agentation runtime itself
  *    is only downloaded when the laravel-toolbar is present on the page.
@@ -105,8 +105,8 @@ export function launchAgentationPlugin(): Plugin {
             return {
                 resolve: {
                     alias: {
-                        "@hardimpactdev/launch-ui/agentation": VIRTUAL_MODULE_ID,
-                        "@hardimpactdev/craft-ui-react/agentation": VIRTUAL_MODULE_ID,
+                        "@nckrtl/launch-ui/agentation": VIRTUAL_MODULE_ID,
+                        "@nckrtl/craft-ui-react/agentation": VIRTUAL_MODULE_ID,
                     },
                 },
             };
@@ -116,8 +116,8 @@ export function launchAgentationPlugin(): Plugin {
             if (
                 id === VIRTUAL_MODULE_ID ||
                 id === "virtual:craft-agentation" ||
-                id === "@hardimpactdev/launch-ui/agentation" ||
-                id === "@hardimpactdev/craft-ui-react/agentation"
+                id === "@nckrtl/launch-ui/agentation" ||
+                id === "@nckrtl/craft-ui-react/agentation"
             ) {
                 return RESOLVED_VIRTUAL_MODULE_ID;
             }

@@ -130,20 +130,20 @@ function launchAliasPlugin(): PluginOption {
                 resolve: {
                     alias: [
                         {
-                            find: /^@hardimpactdev\/craft-ui-react\/vite$/,
-                            replacement: "@hardimpactdev/launch-ui/vite",
+                            find: /^@nckrtl\/craft-ui-react\/vite$/,
+                            replacement: "@nckrtl/launch-ui/vite",
                         },
                         {
-                            find: /^@hardimpactdev\/craft-ui-react\/i18n$/,
-                            replacement: "@hardimpactdev/launch-ui/i18n",
+                            find: /^@nckrtl\/craft-ui-react\/i18n$/,
+                            replacement: "@nckrtl/launch-ui/i18n",
                         },
                         {
-                            find: /^@hardimpactdev\/craft-ui-react\/agentation$/,
-                            replacement: "@hardimpactdev/launch-ui/agentation",
+                            find: /^@nckrtl\/craft-ui-react\/agentation$/,
+                            replacement: "@nckrtl/launch-ui/agentation",
                         },
                         {
-                            find: /^@hardimpactdev\/craft-ui-react\/(.*)$/,
-                            replacement: "@hardimpactdev/launch-ui/$1",
+                            find: /^@nckrtl\/craft-ui-react\/(.*)$/,
+                            replacement: "@nckrtl/launch-ui/$1",
                         },
                     ],
                 },

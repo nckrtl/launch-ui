@@ -37,7 +37,7 @@ export interface LaunchConfigOptions {
 
     /**
      * Enable i18n support. When true, injects initI18n() into app entry.
-     * The __ function becomes available via: import { __ } from '@hardimpactdev/launch-ui/i18n'
+     * The __ function becomes available via: import { __ } from '@nckrtl/launch-ui/i18n'
      */
     i18n?:
         | boolean

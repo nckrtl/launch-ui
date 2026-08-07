@@ -72,7 +72,7 @@ export function __(key, replacements) {
 /**
  * Vite plugin that provides launch i18n:
  * 1. A virtual module "virtual:launch-i18n" with __, setLocale, getLocale, useLocale, initI18n
- * 2. An alias so "@hardimpactdev/launch-ui/i18n" (and legacy "@hardimpactdev/craft-ui-react/i18n") resolves to the virtual module
+ * 2. An alias so "@nckrtl/launch-ui/i18n" (and legacy "@nckrtl/craft-ui-react/i18n") resolves to the virtual module
  * 3. Auto-injection of initI18n() into the app entry point
  */
 export function launchI18nPlugin(
@@ -100,8 +100,8 @@ initI18n({
             return {
                 resolve: {
                     alias: {
-                        "@hardimpactdev/launch-ui/i18n": VIRTUAL_MODULE_ID,
-                        "@hardimpactdev/craft-ui-react/i18n": VIRTUAL_MODULE_ID,
+                        "@nckrtl/launch-ui/i18n": VIRTUAL_MODULE_ID,
+                        "@nckrtl/craft-ui-react/i18n": VIRTUAL_MODULE_ID,
                     },
                 },
             };
@@ -111,8 +111,8 @@ initI18n({
             if (
                 id === VIRTUAL_MODULE_ID ||
                 id === "virtual:craft-i18n" ||
-                id === "@hardimpactdev/launch-ui/i18n" ||
-                id === "@hardimpactdev/craft-ui-react/i18n"
+                id === "@nckrtl/launch-ui/i18n" ||
+                id === "@nckrtl/craft-ui-react/i18n"
             ) {
                 return RESOLVED_VIRTUAL_MODULE_ID;
             }
