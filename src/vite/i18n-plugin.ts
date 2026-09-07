@@ -28,7 +28,7 @@ export function initI18n(options) {
     locale = options.locale ?? "en";
     fallbackLocale = options.fallbackLocale ?? "en";
     for (const [path, mod] of Object.entries(options.files)) {
-        const match = path.match(/\\/([a-z]{2}(?:[-_][a-zA-Z]+)?)\\json$/);
+        const match = path.match(/\\/([a-z]{2}(?:[-_][a-zA-Z]+)?)\\.json$/);
         if (!match) continue;
         const lang = match[1].replace("-", "_");
         const translations = "default" in mod ? mod.default : mod;
@@ -79,16 +79,16 @@ export function launchI18nPlugin(
     i18n: NonNullable<LaunchConfigOptions["i18n"]>,
 ): Plugin {
     const opts = typeof i18n === "object" ? i18n : {};
-    const loc = opts.locale ?? "en";
-    const fallback = opts.fallbackLocale ?? "en";
+    const locale = opts.locale ?? "en";
+    const fallbackLocale = opts.fallbackLocale ?? "en";
     const langPath = opts.langPath ?? "/lang/*.json";
 
     const initCode = `
 import { initI18n } from "virtual:launch-i18n";
 initI18n({
-    locale: "",
-    fallbackLocale: "",
-    files: import.meta.glob("", { eager: true }),
+    locale: ${JSON.stringify(locale)},
+    fallbackLocale: ${JSON.stringify(fallbackLocale)},
+    files: import.meta.glob(${JSON.stringify(langPath)}, { eager: true }),
 });
 `;
 
