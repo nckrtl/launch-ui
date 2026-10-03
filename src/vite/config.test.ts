@@ -9,6 +9,9 @@ import { inertiaOptions } from "./environment.ts";
 import { getPlugins, launchPublicDevServerUrlPlugin } from "./plugins.ts";
 import { launchPhpReloadPlugin } from "./php-reload-plugin.ts";
 
+// laravel-vite-plugin refuses to configure a dev server when CI is set.
+process.env.LARAVEL_BYPASS_ENV_CHECK = "1";
+
 const orbitEnv = {
   ORBIT_DEV_SERVER_ORIGIN: "https://commander.test/__orbit/vite",
 };
