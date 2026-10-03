@@ -1,7 +1,7 @@
-import { defineConfig } from "vite-plus";
+import { defineConfig, loadEnv } from "vite-plus";
 import type { UserConfig } from "vite-plus";
 import { getPlugins } from "./plugins.ts";
-import type { LaunchConfigOptions, CraftConfigOptions } from "./types.ts";
+import type { LaunchConfigOptions } from "./types.ts";
 
 export type { LaunchConfigOptions, CraftConfigOptions } from "./types.ts";
 export { getPlugins } from "./plugins.ts";
@@ -17,23 +17,23 @@ export { getPlugins } from "./plugins.ts";
  * export default defineLaunchConfig();
  */
 export async function defineLaunchConfig(options: LaunchConfigOptions = {}) {
-    const { lint, staged, ...launchOptions } = options;
-    const plugins = await getPlugins(launchOptions);
+  const { lint, fmt, staged, ...launchOptions } = options;
 
-    return defineConfig(() => ({
+  return defineConfig(
+    async ({ mode }) =>
+      ({
         ...(lint ? { lint } : {}),
-        staged: staged ?? { "*": "vp check --fix" },
-        plugins,
+        fmt: fmt ?? { ignorePatterns: [".agents/**"] },
+        staged: staged ?? { "*": "vp check --fix", "*.php": "vendor/bin/pint" },
+        plugins: await getPlugins(launchOptions, loadEnv(mode, process.cwd(), "")),
         server: {
-            watch: {
-                // Laravel vendor/ can contain recursive symlinks (e.g.
-                // orchestra/testbench-core laravel/vendor -> vendor) that crash
-                // the dev watcher with ELOOP once a path-repo package is
-                // symlinked in. vendor/ is never part of the Vite module graph.
-                ignored: ["**/vendor/**"],
-            },
+          watch: {
+            // Avoid vendor symlink loops and scanning generated runtime files.
+            ignored: ["**/vendor/**", "**/storage/**", "**/bootstrap/cache/**"],
+          },
         },
-    } as UserConfig));
+      }) as UserConfig,
+  );
 }
 
 /**

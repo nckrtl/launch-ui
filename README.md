@@ -21,5 +21,4 @@ export default defineLaunchConfig();
 
 - **Vite Integration**: Zero-config Vite setups for Laravel + React + Inertia projects via `defineLaunchConfig()`.
 - **i18n Support**: Simple translation helpers available via `@nckrtl/launch-ui/i18n`.
-- **Agentation**: Moved to the toolbar itself — `composer require --dev nckrtl/laravel-toolbar-agentation`. The `agentation` option here is a no-op.
 - **Legacy Fallback**: Backwards-compatible aliases for `@nckrtl/craft-ui-react/*` and `defineCraftConfig`.

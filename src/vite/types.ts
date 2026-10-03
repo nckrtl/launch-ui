@@ -7,73 +7,72 @@ import type { PluginOption } from "vite-plus";
  * Pass `false` to disable a plugin entirely.
  */
 export interface LaunchConfigOptions {
-    /** Laravel Vite plugin options */
-    laravel?: {
-        input?: string[];
-        refresh?: boolean;
-        ssr?: string;
+  /** Laravel Vite plugin options */
+  laravel?: {
+    input?: string[];
+    refresh?: boolean;
+    ssr?: string;
+    detectTls?: string | boolean;
+  };
+
+  /** @inertiajs/vite plugin options, or `false` to disable */
+  inertia?:
+    | false
+    | {
+        ssr?: false | { entry?: string; port?: number };
+      };
+
+  /** @vitejs/plugin-react options */
+  react?: {
+    babel?: {
+      plugins?: string[];
     };
+  };
 
-    /** @inertiajs/vite plugin options, or `false` to disable */
-    inertia?:
-        | false
-        | {
-              ssr?: false | { entry?: string; port?: number };
-          };
+  /** @laravel/vite-plugin-wayfinder options, or `false` to disable */
+  wayfinder?:
+    | false
+    | {
+        formVariants?: boolean;
+      };
 
-    /** @vitejs/plugin-react options */
-    react?: {
-        babel?: {
-            plugins?: string[];
-        };
+  /**
+   * Enable i18n support. When true, injects initI18n() into app entry.
+   * The __ function becomes available via: import { __ } from '@nckrtl/launch-ui/i18n'
+   */
+  i18n?:
+    | boolean
+    | {
+        /** Active locale (default: "en") */
+        locale?: string;
+        /** Fallback locale (default: "en") */
+        fallbackLocale?: string;
+        /** Glob pattern for lang files (default: "/lang/*.json") */
+        langPath?: string;
+      };
+
+  /** Additional Vite plugins to include */
+  plugins?: PluginOption[];
+
+  /** VitePlus lint options — passed through to defineConfig */
+  lint?: {
+    options?: {
+      typeAware?: boolean;
+      typeCheck?: boolean;
     };
+  };
 
-    /** @laravel/vite-plugin-wayfinder options, or `false` to disable */
-    wayfinder?:
-        | false
-        | {
-              formVariants?: boolean;
-          };
+  /** Formatting options, including an override for the default .agents exclusion. */
+  fmt?: {
+    ignorePatterns?: string[];
+  };
 
-    /**
-     * Enable i18n support. When true, injects initI18n() into app entry.
-     * The __ function becomes available via: import { __ } from '@nckrtl/launch-ui/i18n'
-     */
-    i18n?:
-        | boolean
-        | {
-              /** Active locale (default: "en") */
-              locale?: string;
-              /** Fallback locale (default: "en") */
-              fallbackLocale?: string;
-              /** Glob pattern for lang files (default: "/lang/*.json") */
-              langPath?: string;
-          };
-
-    /**
-     * @deprecated Has no effect. Agentation moved out of the frontend build
-     * into the toolbar itself, which ships the runtime prebuilt:
-     * `composer require --dev nckrtl/laravel-toolbar-agentation`.
-     */
-    agentation?: boolean;
-
-    /** Additional Vite plugins to include */
-    plugins?: PluginOption[];
-
-    /** VitePlus lint options — passed through to defineConfig */
-    lint?: {
-        options?: {
-            typeAware?: boolean;
-            typeCheck?: boolean;
-        };
-    };
-
-    /**
-     * VitePlus staged command map for pre-commit hooks. Keys are glob patterns,
-     * values are the shell command to run on matching staged files. Defaults
-     * to `{ "*": "vp check --fix" }` — override to customize.
-     */
-    staged?: Record<string, string>;
+  /**
+   * VitePlus staged command map for pre-commit hooks. Keys are glob patterns,
+   * values are the shell command to run on matching staged files. Defaults
+   * to VitePlus formatting plus Pint for PHP files — override to customize.
+   */
+  staged?: Record<string, string>;
 }
 
 /**

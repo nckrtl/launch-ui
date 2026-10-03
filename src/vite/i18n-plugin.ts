@@ -75,15 +75,13 @@ export function __(key, replacements) {
  * 2. An alias so "@nckrtl/launch-ui/i18n" (and legacy "@nckrtl/craft-ui-react/i18n") resolves to the virtual module
  * 3. Auto-injection of initI18n() into the app entry point
  */
-export function launchI18nPlugin(
-    i18n: NonNullable<LaunchConfigOptions["i18n"]>,
-): Plugin {
-    const opts = typeof i18n === "object" ? i18n : {};
-    const locale = opts.locale ?? "en";
-    const fallbackLocale = opts.fallbackLocale ?? "en";
-    const langPath = opts.langPath ?? "/lang/*.json";
+export function launchI18nPlugin(i18n: NonNullable<LaunchConfigOptions["i18n"]>): Plugin {
+  const opts = typeof i18n === "object" ? i18n : {};
+  const locale = opts.locale ?? "en";
+  const fallbackLocale = opts.fallbackLocale ?? "en";
+  const langPath = opts.langPath ?? "/lang/*.json";
 
-    const initCode = `
+  const initCode = `
 import { initI18n } from "virtual:launch-i18n";
 initI18n({
     locale: ${JSON.stringify(locale)},
@@ -92,45 +90,45 @@ initI18n({
 });
 `;
 
-    return {
-        name: "launch-i18n",
-        enforce: "pre",
+  return {
+    name: "launch-i18n",
+    enforce: "pre",
 
-        config() {
-            return {
-                resolve: {
-                    alias: {
-                        "@nckrtl/launch-ui/i18n": VIRTUAL_MODULE_ID,
-                        "@nckrtl/craft-ui-react/i18n": VIRTUAL_MODULE_ID,
-                    },
-                },
-            };
+    config() {
+      return {
+        resolve: {
+          alias: {
+            "@nckrtl/launch-ui/i18n": VIRTUAL_MODULE_ID,
+            "@nckrtl/craft-ui-react/i18n": VIRTUAL_MODULE_ID,
+          },
         },
+      };
+    },
 
-        resolveId(id) {
-            if (
-                id === VIRTUAL_MODULE_ID ||
-                id === "virtual:craft-i18n" ||
-                id === "@nckrtl/launch-ui/i18n" ||
-                id === "@nckrtl/craft-ui-react/i18n"
-            ) {
-                return RESOLVED_VIRTUAL_MODULE_ID;
-            }
-        },
+    resolveId(id) {
+      if (
+        id === VIRTUAL_MODULE_ID ||
+        id === "virtual:craft-i18n" ||
+        id === "@nckrtl/launch-ui/i18n" ||
+        id === "@nckrtl/craft-ui-react/i18n"
+      ) {
+        return RESOLVED_VIRTUAL_MODULE_ID;
+      }
+    },
 
-        load(id) {
-            if (id === RESOLVED_VIRTUAL_MODULE_ID) {
-                return I18N_RUNTIME;
-            }
-        },
+    load(id) {
+      if (id === RESOLVED_VIRTUAL_MODULE_ID) {
+        return I18N_RUNTIME;
+      }
+    },
 
-        transform(code, id) {
-            if (!id.match(/resources\/js\/app\.(tsx|ts|jsx|js)$/)) {
-                return null;
-            }
-            return { code: initCode + code, map: null };
-        },
-    };
+    transform(code, id) {
+      if (!id.match(/resources\/js\/app\.(tsx|ts|jsx|js)$/)) {
+        return null;
+      }
+      return { code: initCode + code, map: null };
+    },
+  };
 }
 
 /**
