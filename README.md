@@ -20,5 +20,6 @@ export default defineLaunchConfig();
 ## Features
 
 - **Vite Integration**: Zero-config Vite setups for Laravel + React + Inertia projects via `defineLaunchConfig()`.
+- **PHP Reload**: On the dev server, PHP changes refresh Inertia props with `router.reload()` instead of reloading the page. Blade views still reload. Turn it off with `phpReload: false`.
 - **i18n Support**: Simple translation helpers available via `@nckrtl/launch-ui/i18n`.
 - **Legacy Fallback**: Backwards-compatible aliases for `@nckrtl/craft-ui-react/*` and `defineCraftConfig`.

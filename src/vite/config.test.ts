@@ -3,9 +3,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vite-plus/test";
 import { createServer, resolveConfig } from "vite-plus";
+import type { PluginOption } from "vite-plus";
 import { defineLaunchConfig } from "./index.ts";
 import { inertiaOptions } from "./environment.ts";
 import { getPlugins, launchPublicDevServerUrlPlugin } from "./plugins.ts";
+import { launchPhpReloadPlugin } from "./php-reload-plugin.ts";
 
 const orbitEnv = {
   ORBIT_DEV_SERVER_ORIGIN: "https://commander.test/__orbit/vite",
@@ -238,5 +240,88 @@ describe("Launch defaults", () => {
     } finally {
       await server.close();
     }
+  });
+});
+
+describe("PHP reload", () => {
+  const css = { id: "/app/resources/css/app.css" };
+  const script = { id: "/app/resources/js/pages/Home.tsx" };
+
+  function hotUpdate(file: string, environment = "client") {
+    const sent: unknown[] = [];
+    const plugin = launchPhpReloadPlugin(["resources/js/app.tsx"]);
+    const result = (plugin.hotUpdate as Function).call(
+      {
+        environment: { name: environment, hot: { send: (payload: unknown) => sent.push(payload) } },
+      },
+      { file, modules: [{ importers: new Set([css, script]) }] },
+    );
+
+    return { result, sent };
+  }
+
+  it("keeps the stylesheet update and asks the browser to reload props", () => {
+    const { result, sent } = hotUpdate("/app/app/Http/Controllers/HomeController.php");
+
+    expect(result).toEqual([css]);
+    expect(sent).toEqual([
+      {
+        type: "custom",
+        event: "launch:php-update",
+        data: { file: "/app/app/Http/Controllers/HomeController.php" },
+      },
+    ]);
+  });
+
+  it("notifies the browser once across environments", () => {
+    const { result, sent } = hotUpdate("/app/config/app.php", "ssr");
+
+    expect(result).toEqual([css]);
+    expect(sent).toEqual([]);
+  });
+
+  it.each(["/app/resources/views/app.blade.php", "/app/resources/js/pages/Home.tsx"])(
+    "leaves %s to the default handling",
+    (file) => {
+      const { result, sent } = hotUpdate(file);
+
+      expect(result).toBeUndefined();
+      expect(sent).toEqual([]);
+    },
+  );
+
+  it("adds the reload listener to the configured entry only", () => {
+    const plugin = launchPhpReloadPlugin(["resources/js/app.tsx", "resources/css/app.css"]);
+    const transform = plugin.transform as Function;
+
+    expect(transform("", "/app/resources/js/app.tsx").code).toContain("__launchRouter.reload()");
+    expect(transform("", "/app/resources/css/app.css")).toBeNull();
+    expect(transform("", "/app/resources/js/pages/Home.tsx")).toBeNull();
+  });
+
+  it("reloads the page only for Blade views by default", async () => {
+    const names = (plugins: PluginOption[]) =>
+      plugins.flat().map((plugin) => (plugin as { name?: string } | null)?.name);
+    const fullReloadPaths = (plugins: PluginOption[]) =>
+      plugins
+        .flat(Infinity as 1)
+        .filter(
+          (plugin) => (plugin as { name?: string } | null)?.name === "vite-plugin-full-reload",
+        )
+        .map(
+          (plugin) =>
+            (plugin as { __laravel_plugin_config: { paths: string[] } }).__laravel_plugin_config
+              .paths,
+        );
+
+    const withoutInertia = await getPlugins({ wayfinder: false, inertia: false }, {});
+    expect(names(withoutInertia)).not.toContain("launch:php-reload");
+
+    const withInertia = await getPlugins({ wayfinder: false }, {});
+    expect(names(withInertia)).toContain("launch:php-reload");
+    expect(fullReloadPaths(withInertia)).toEqual([["resources/views/**"]]);
+
+    const disabled = await getPlugins({ wayfinder: false, phpReload: false }, {});
+    expect(names(disabled)).not.toContain("launch:php-reload");
   });
 });

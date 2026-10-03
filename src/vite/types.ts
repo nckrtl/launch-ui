@@ -10,7 +10,8 @@ export interface LaunchConfigOptions {
   /** Laravel Vite plugin options */
   laravel?: {
     input?: string[];
-    refresh?: boolean;
+    /** Files that reload the page. Defaults to `resources/views/**` when `phpReload` is on. */
+    refresh?: boolean | string | string[];
     ssr?: string;
     detectTls?: string | boolean;
   };
@@ -35,6 +36,13 @@ export interface LaunchConfigOptions {
     | {
         formVariants?: boolean;
       };
+
+  /**
+   * Refresh Inertia props when a PHP file changes, instead of reloading the page.
+   * Applies to the dev server when Inertia is enabled. Blade files still reload the page.
+   * Default: true.
+   */
+  phpReload?: boolean;
 
   /**
    * Enable i18n support. When true, injects initI18n() into app entry.

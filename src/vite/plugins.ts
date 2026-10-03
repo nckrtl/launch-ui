@@ -5,6 +5,7 @@ import type { PluginOption, ViteDevServer } from "vite-plus";
 import type { LaunchConfigOptions } from "./types.ts";
 import { inertiaOptions, orbitDevServerUrl } from "./environment.ts";
 import type { Environment } from "./environment.ts";
+import { launchPhpReloadPlugin } from "./php-reload-plugin.ts";
 
 /**
  * Import a package from the consumer project's node_modules.
@@ -54,13 +55,17 @@ export async function getPlugins(
   ]);
 
   const orbitUrl = orbitDevServerUrl(env);
+  const input = options.laravel?.input ?? ["resources/js/app.tsx"];
+  const phpReload = options.inertia !== false && options.phpReload !== false;
 
   const plugins: PluginOption[] = [
     launchAliasPlugin(),
+    // Runs before Tailwind so it can drop the full reload Tailwind sends for PHP changes.
+    ...(phpReload ? [launchPhpReloadPlugin(input)] : []),
     laravel({
-      input: options.laravel?.input ?? ["resources/js/app.tsx"],
+      input,
       ssr: options.laravel?.ssr,
-      refresh: options.laravel?.refresh ?? true,
+      refresh: options.laravel?.refresh ?? (phpReload ? ["resources/views/**"] : true),
       detectTls: options.laravel?.detectTls ?? (orbitUrl ? false : undefined),
     }),
     react(options.react),
