@@ -9,7 +9,7 @@ import type { PluginOption } from "vite-plus";
 export interface LaunchConfigOptions {
   /** Laravel Vite plugin options */
   laravel?: {
-    input?: string[];
+    input?: string | string[];
     /** Files that reload the page. Defaults to `resources/views/**` when `phpReload` is on. */
     refresh?: boolean | string | string[];
     ssr?: string;

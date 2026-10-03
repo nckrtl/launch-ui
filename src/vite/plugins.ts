@@ -55,7 +55,7 @@ export async function getPlugins(
   ]);
 
   const orbitUrl = orbitDevServerUrl(env);
-  const input = options.laravel?.input ?? ["resources/js/app.tsx"];
+  const input = [options.laravel?.input ?? "resources/js/app.tsx"].flat();
   const phpReload = options.inertia !== false && options.phpReload !== false;
 
   const plugins: PluginOption[] = [

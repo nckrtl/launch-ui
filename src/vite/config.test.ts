@@ -324,6 +324,12 @@ describe("PHP reload", () => {
     expect(names(withInertia)).toContain("launch:php-reload");
     expect(fullReloadPaths(withInertia)).toEqual([["resources/views/**"]]);
 
+    const singleEntry = await getPlugins(
+      { wayfinder: false, laravel: { input: "resources/js/app.tsx" } },
+      {},
+    );
+    expect(names(singleEntry)).toContain("launch:php-reload");
+
     const disabled = await getPlugins({ wayfinder: false, phpReload: false }, {});
     expect(names(disabled)).not.toContain("launch:php-reload");
   });
