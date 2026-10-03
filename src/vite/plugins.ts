@@ -245,11 +245,6 @@ async function getArtisanRunners(): Promise<PluginOption | null> {
     const { run } = await importFromConsumer("vite-plugin-run");
     return run([
       {
-        name: "waymaker",
-        run: ["php", "artisan", "waymaker:generate"],
-        pattern: ["app/**/Http/**/*.php"],
-      },
-      {
         name: "typescript",
         run: ["php", "artisan", "typescript:transform"],
         pattern: ["app/{Data,Enums}/**/*.php"],
