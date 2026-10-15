@@ -1,7 +1,8 @@
 import { isCSSRequest } from "vite-plus";
 import type { Plugin } from "vite-plus";
 
-const EVENT = "launch:php-update";
+export const PHP_UPDATE_EVENT = "launch:php-update";
+const EVENT = PHP_UPDATE_EVENT;
 
 /** Batches the reloads when one save touches several PHP files. */
 const RELOAD_DELAY_MS = 50;
