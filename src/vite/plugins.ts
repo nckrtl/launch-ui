@@ -5,7 +5,7 @@ import type { PluginOption, ViteDevServer } from "vite-plus";
 import type { LaunchConfigOptions } from "./types.ts";
 import { inertiaOptions, orbitDevServerUrl } from "./environment.ts";
 import type { Environment } from "./environment.ts";
-import { launchPhpReloadPlugin } from "./php-reload-plugin.ts";
+import { launchPhpReloadPlugin, PHP_UPDATE_EVENT } from "./php-reload-plugin.ts";
 
 /**
  * Import a package from the consumer project's node_modules.
@@ -90,7 +90,9 @@ export async function getPlugins(
 
   if (options.i18n) {
     const { launchI18nPlugin } = await import("./i18n-plugin.ts");
-    plugins.push(launchI18nPlugin(options.i18n));
+    plugins.push(
+      launchI18nPlugin(options.i18n, { reloadEvent: phpReload ? PHP_UPDATE_EVENT : undefined }),
+    );
   }
 
   plugins.push(launchPublicDevServerUrlPlugin(env));
