@@ -5,6 +5,13 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version part to bump
+        type: choice
+        options: [patch, minor, major]
+        default: patch
 
 jobs:
   test:
@@ -22,7 +29,7 @@ jobs:
   auto-release:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     permissions:
       contents: write
     outputs:
@@ -47,9 +54,15 @@ jobs:
           LATEST="${{ steps.latest_tag.outputs.tag }}"
           VERSION=${LATEST#v}
           IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-          PATCH=$((PATCH + 1))
+          case "$BUMP" in
+            major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+            minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+            *) PATCH=$((PATCH + 1)) ;;
+          esac
           NEXT="v${MAJOR}.${MINOR}.${PATCH}"
           echo "version=$NEXT" >> $GITHUB_OUTPUT
+        env:
+          BUMP: ${{ inputs.bump || 'patch' }}
 
       - name: Create and push tag
         run: |
@@ -69,7 +82,7 @@ jobs:
   publish:
     needs: auto-release
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     permissions:
       contents: read
       id-token: write
